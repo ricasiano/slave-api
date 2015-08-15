@@ -7,9 +7,6 @@ CELERY_ROUTES = {
 	'message.accept': {
 		'queue': 'message'
 	},
-	'adder.accept': {
-		'queue': 'adder'
-	},
 	'notification.accept': {
 		'queue': 'notification'
 	}

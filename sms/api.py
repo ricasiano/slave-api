@@ -16,8 +16,8 @@ def message():
 #notification if delivered or not, useful for multi-part messages
 @app.route('/notification', methods=['POST'])
 def notification():
-    from notification import notification_accept
-    result = notification_accept.delay(request.form)
+    from notification import accept
+    result = accept.delay(request.form)
     result.wait()
     return '{"status":202,"message":"ACCEPTED"}', 'HTTP/1.1 202 Accepted'
 
