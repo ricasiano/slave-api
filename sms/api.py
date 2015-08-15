@@ -8,17 +8,15 @@ def index():
 #message endpoint, all inbound messages are rerouted here
 @app.route('/message', methods=['POST'])
 def message():
-    from message import accept
-    result = accept.delay(request.form)
-    result.wait()
+    from slaves.message import accept
+    accept.delay(request.form)	
     return '{"status":202,"message":"ACCEPTED"}', 'HTTP/1.1 202 Accepted'
 
 #notification if delivered or not, useful for multi-part messages
 @app.route('/notification', methods=['POST'])
 def notification():
-    from notification import accept
-    result = accept.delay(request.form)
-    result.wait()
+    from slaves.notification import accept
+    accept.delay(request.form)
     return '{"status":202,"message":"ACCEPTED"}', 'HTTP/1.1 202 Accepted'
 
 #if __name__ == '__main__':
