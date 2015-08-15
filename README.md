@@ -7,16 +7,16 @@ Platform Structure:
 ===================
 .
 sms/
-+-- wsgi.py (gunicorn container)<br />
-+-- api.py  (entrypoint once nginx relayed the request, routes wether to go to)<br />
-+-- celeryconfig.py (configurations as well as routings for workers)<br />
-+-- mongo.py (mongo connection handler)<br />
-+-- slaves/<br />
-|      +--   message.py (resource handler for chikka's message inbound transaction)<br />
-|      +--   notification.py (resource handler for chikka's delivery notification)<br />
-|      +--   reply.py (worker for handling message replies for inbound messages)<br />
-|      +--   broadcast.py (**todo** for message broadcasts)<br />
-|      +--   keywords/<br />
-|      |      +--   project1<br />
-|      |      +--   project2<br />
-|      |      +--   projectN<br />
++--&nbsp;&nbsp;&nbsp;&nbsp;wsgi.py&nbsp;&nbsp;(gunicorn container)<br />
++--&nbsp;&nbsp;&nbsp;&nbsp;api.py&nbsp;&nbsp;(entrypoint once nginx relayed the request, routes wether to go to)<br />
++--&nbsp;&nbsp;&nbsp;&nbsp;celeryconfig.py&nbsp;&nbsp;(configurations as well as routings for workers)<br />
++--&nbsp;&nbsp;&nbsp;&nbsp;mongo.py&nbsp;&nbsp;(mongo connection handler)<br />
++--&nbsp;&nbsp;&nbsp;&nbsp;slaves/<br />
+|&nbsp;&nbsp;&nbsp;&nbsp;+--&nbsp;&nbsp;message.py (resource handler for chikka's message inbound transaction)<br />
+|&nbsp;&nbsp;&nbsp;&nbsp;+--&nbsp;&nbsp;notification.py (resource handler for chikka's delivery notification)<br />
+|&nbsp;&nbsp;&nbsp;&nbsp;+--&nbsp;&nbsp;reply.py (worker for handling message replies for inbound messages)<br />
+|&nbsp;&nbsp;&nbsp;&nbsp;+--&nbsp;&nbsp;broadcast.py (**todo** for message broadcasts)<br />
+|&nbsp;&nbsp;&nbsp;&nbsp;+--&nbsp;&nbsp;keywords/<br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;+--&nbsp;&nbsp;project1<br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;+--&nbsp;&nbsp;project2<br />
+|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;+--&nbsp;&nbsp;projectN<br />
