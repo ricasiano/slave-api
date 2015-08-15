@@ -7,16 +7,16 @@ Platform Structure:
 ===================
 .
 sms/
-+-- wsgi.py (gunicorn container)
-+-- api.py  (entrypoint once nginx relayed the request, routes wether to go to)
-+-- celeryconfig.py (configurations as well as routings for workers)
-+-- mongo.py (mongo connection handler)
-+-- slaves/
-|   +-- message.py (resource handler for chikka's message inbound transaction)
-|   +-- notification.py (resource handler for chikka's delivery notification)
-|   +-- reply.py (worker for handling message replies for inbound messages)
-|   +-- broadcast.py (**todo** for message broadcasts)
-|   +-- keywords/
-|   |   +--project1
-|   |   +--project2
-|   |   +--projectN
++-- wsgi.py (gunicorn container)<br />
++-- api.py  (entrypoint once nginx relayed the request, routes wether to go to)<br />
++-- celeryconfig.py (configurations as well as routings for workers)<br />
++-- mongo.py (mongo connection handler)<br />
++-- slaves/<br />
+|   +-- message.py (resource handler for chikka's message inbound transaction)<br />
+|   +-- notification.py (resource handler for chikka's delivery notification)<br />
+|   +-- reply.py (worker for handling message replies for inbound messages)<br />
+|   +-- broadcast.py (**todo** for message broadcasts)<br />
+|   +-- keywords/<br />
+|   |   +--project1<br />
+|   |   +--project2<br />
+|   |   +--projectN<br />
