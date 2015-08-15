@@ -1,11 +1,12 @@
-# slave-api
-Chikka API integration but on a queue-based workflow. It runs on 
-python, flask, nginx, gunicorn, rabbitmq, celery &amp; 
-mongodb for database(redis if ram wasn't that expensive =(   ). 
-Test server runs on Vagrant and workers(gunicorn, celery workers) are daemonized via supervisor.
+slave-api
+=========
+
+Chikka API integration but on a queue-based workflow. It runs on python, flask, nginx, gunicorn, rabbitmq, celery & mongodb for database(redis if ram wasn't that expensive =(   ). Test server runs on Vagrant and workers(gunicorn, celery workers) are daemonized via supervisor.
 
 Platform Structure:
-sms
+===================
+
+sms/
 --> wsgi.py (gunicorn container)
 --> api.py  (entrypoint once nginx relayed the request, routes wether to go to )
 --> celeryconfig.py (configurations as well as routings for workers)
