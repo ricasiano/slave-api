@@ -8,6 +8,7 @@ Platform Structure:
 .
 sms/
 +-- wsgi.py (gunicorn container)
+
 +-- api.py  (entrypoint once nginx relayed the request, routes wether to go to)
 +-- celeryconfig.py (configurations as well as routings for workers)
 +-- mongo.py (mongo connection handler)
