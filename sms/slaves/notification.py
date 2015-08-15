@@ -1,7 +1,7 @@
 from celery import Celery
 import time
 from mongo import mongoCollections
-collections = collections()
+collections = mongoCollections()
 subscribers = collections.subscribers
 
 app = Celery('notification', backend='amqp://localhost/', broker='amqp://localhost/')
