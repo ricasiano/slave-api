@@ -4,3 +4,5 @@ sms-workers/venv/
 *log
 *.pyc
 __init__.py
+.idea
+.nbproject
