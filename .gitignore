@@ -1,2 +1,6 @@
 sms/venv/
 sms-workers/venv/
+*pid
+*log
+*.pyc
+__init__.py
