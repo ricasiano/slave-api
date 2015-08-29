@@ -4,10 +4,10 @@ CELERY_ACCEPT_CONTENT=['json']
 CELERY_TIMEZONE = 'Asia/Manila'
 CELERY_ENABLE_UTC = True
 CELERY_ROUTES = {
-	'slaves.message.accept': {
+	'routing.post.message.accept': {
 		'queue': 'message'
 	},
-	'slaves.notification.accept': {
+	'routing.post.notification.accept': {
 		'queue': 'notification'
 	}
 }
