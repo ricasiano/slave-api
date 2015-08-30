@@ -1,11 +1,13 @@
 from celery import Celery
+
+from configs.mongo import mongo_collections
 import time
-from mongo import mongo_collections
+
 collections = mongo_collections()
 subscribers = collections.subscribers
 
 app = Celery('notification', backend='amqp://localhost/', broker='amqp://localhost/')
-app.config_from_object('celeryconfig')
+app.config_from_object('configs.celery')
 
 @app.task
 def accept(data, path):
