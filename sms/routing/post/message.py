@@ -1,3 +1,8 @@
+# Message endpoint, this is where the subscriber's messages
+# are handled
+#
+# Author: Rai Icasiano <ricasiano at gmail dot com>
+
 from celery import Celery
 from configs.mongo import mongo_collections
 collections = mongo_collections()
@@ -15,14 +20,14 @@ def accept(data):
     try:
         #get our keyword, this will be the basis on which project we should be loading 
         message = data.get('message')
-        words = message.split(' ')
-        keyword = words[0]
-        print 'trying to import ' + 'slaves.keywords.' + keyword + '.process file'
-        loaded_mod = __import__('routing.post.slaves.keywords.' + keyword + '.process', fromlist=['accept'])
+        texts = message.split(' ')
+        keyword = texts.pop(0).lower()
+        param = texts.pop(0).lower()
+        loaded_mod = __import__('routing.post.inbound.keywords.' + keyword + '.process', fromlist=['accept'])
         try: 
-            endpoint = getattr(loaded_mod, 'accept')
+            project = getattr(loaded_mod, 'accept')
             #async request to our endpoint
-            endpoint.delay(data)
+            project.delay(data, keyword, param)
             return 'routed to keyword'
 
         except AttributeError:
@@ -30,5 +35,3 @@ def accept(data):
 
     except ImportError:
         return 'importing keyword failed'
-
-    return data.get('message_type')
