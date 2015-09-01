@@ -6,6 +6,9 @@
 from celery import Celery
 from configs.mongo import mongo_collections
 import pika
+import json
+import uuid
+import datetime
 
 collections = mongo_collections()
 subscribers = collections.subscribers
@@ -19,15 +22,26 @@ def accept(data, keyword, param):
     param_obj = ParamFactory(keyword, param)
     project = param_obj.create()
     projectInstance = project()
-    reply = projectInstance.process(data, param.pop(0))
-    outbound(reply)
+    reply = projectInstance.process(data)
+    send_message(reply)
 
-def send_message(data):
+def send_message(reply):
     connection = pika.BlockingConnection(pika.ConnectionParameters(
         host='localhost'))
+    properties = pika.BasicProperties(content_type='application/json', 
+            content_encoding='UTF-8',
+            delivery_mode=1)
     channel = connection.channel()
-    channel.queue_declare(queue='outbound')
+    guid = uuid.uuid4()
+    message = {"id": str(guid),
+             "task": "slaves.outbound.accept",
+             "body": reply
+             "args": [],
+             "kwargs": {},
+             "retries": 0,
+             "eta": datetime.datetime.now().isoformat('T')}
+    channel.queue_declare(queue='outbound', durable=True)
     channel.basic_publish(exchange='',
         routing_key='outbound',
-        body=data)
+        body=json.dumps(message), properties=properties)
     connection.close()
