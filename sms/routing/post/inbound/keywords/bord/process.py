@@ -23,9 +23,9 @@ def accept(data, keyword, param):
     project = param_obj.create()
     projectInstance = project()
     reply = projectInstance.process(data)
-    send_message(reply)
+    send_message(data, reply)
 
-def send_message(reply):
+def send_message(data, reply):
     connection = pika.BlockingConnection(pika.ConnectionParameters(
         host='localhost'))
     properties = pika.BasicProperties(content_type='application/json', 
@@ -33,13 +33,18 @@ def send_message(reply):
             delivery_mode=1)
     channel = connection.channel()
     guid = uuid.uuid4()
-    message = {"id": str(guid),
-             "task": "slaves.outbound.accept",
-             "body": reply
-             "args": [],
-             "kwargs": {},
-             "retries": 0,
-             "eta": datetime.datetime.now().isoformat('T')}
+    message = {
+            "id": str(guid),
+            "task": "slaves.outbound.accept",
+            "args": [
+                data.get('mobile_number'),
+                data.get('request_id'),
+                reply
+            ],
+            "kwargs": {},
+            "retries": 0,
+            "eta": datetime.datetime.now().isoformat('T')
+        }
     channel.queue_declare(queue='outbound', durable=True)
     channel.basic_publish(exchange='',
         routing_key='outbound',
