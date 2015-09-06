@@ -6,6 +6,7 @@
 from celery import Celery
 from configs.mongo import mongo_collections
 collections = mongo_collections()
+
 subscribers = collections.subscribers
 
 app = Celery('message', backend='amqp://localhost/', broker='amqp://localhost/')

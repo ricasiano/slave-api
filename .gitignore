@@ -6,3 +6,4 @@ sms-workers/venv/
 __init__.py
 .idea
 .nbproject
+configs
