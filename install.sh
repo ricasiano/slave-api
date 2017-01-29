@@ -49,6 +49,7 @@ pip install flask
 pip install celery
 pip install pymongo
 pip install gunicorn
+pip install pika
 echo "CHIKKA_CLIENT_ID=\"YOUR_CHIKKA_CLIENT_ID\"
 CHIKKA_SECRET_KEY=\"YOUR_CHIKKA_SECRET_KEY\"
 CHIKKA_SHORTCODE=YOUR_SHORTCODE_HERE" >> /home/ubuntu/.profile
