@@ -5,20 +5,20 @@ Chikka API integration but on a queue-based workflow. It runs on python, flask, 
 
 Installation
 ============
-create an ec2 instance
- - on security group, allow http(port 80)
+create an ec2 instance<br />
+ - on security group, allow http(port 80)<br /><br />
 
-run: source install.sh
-re-login
-restart nginx
-restart supervisor
-run celery workers in foreground or daemonize it
+run: source install.sh<br />
+re-login<br />
+restart nginx<br />
+restart supervisor<br />
+run celery workers in foreground or daemonize it<br /><br />
 
-workers: 
-    celery -A routing.post.notification worker -Q notification --loglevel=info -n notification1.worker.%h
-    celery -A routing.post.message worker -Q message --loglevel=info -n message1.worker.%h
-    celery -A routing.post.message worker -Q message --loglevel=info -n message2.worker.%h
-    celery -A routing.post.inbound.keywords.bord.process worker -Q bord --loglevel=info -n bord1.worker.%h
+workers: <br /><br />
+&nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.notification worker -Q notification --loglevel=info -n notification1.worker.%h<br />
+&nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.message worker -Q message --loglevel=info -n message1.worker.%h<br />
+&nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.message worker -Q message --loglevel=info -n message2.worker.%h<br />
+&nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.inbound.keywords.bord.process worker -Q bord --loglevel=info -n bord1.worker.%h<br />
 
 
 Platform Structure:
