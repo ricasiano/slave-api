@@ -39,7 +39,7 @@ echo "server {
 }" | sudo tee --append /etc/nginx/conf.d/default.conf > /dev/null
 sudo service supervisor restart
 sudo service nginx restart
-pip install --upgrade pip
+sudo pip install --upgrade pip
 sudo pip install virtualenv
 mkdir apps
 cd apps
@@ -54,7 +54,6 @@ pip install gunicorn
 pip install pika
 pip install uuid
 pip install requests
-echo "CHIKKA_CLIENT_ID=\"YOUR_CHIKKA_CLIENT_ID\"
-CHIKKA_SECRET_KEY=\"YOUR_CHIKKA_SECRET_KEY\"
-CHIKKA_SHORTCODE=YOUR_SHORTCODE_HERE" >> /home/ubuntu/.profile
-exit
+export CHIKKA_CLIENT_ID="YOUR_CHIKKA_CLIENT_ID"
+export CHIKKA_SECRET_KEY="YOUR_CHIKKA_SECRET_KEY"
+export CHIKKA_SHORTCODE=YOUR_SHORTCODE_HERE
