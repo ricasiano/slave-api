@@ -22,6 +22,7 @@ Installation
 &nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.message worker -Q message --loglevel=info -n message1.worker.%h<br />
 &nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.message worker -Q message --loglevel=info -n message2.worker.%h<br />
 &nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.inbound.keywords.bord.process worker -Q bord --loglevel=info -n bord1.worker.%h<br />
+&nbsp;&nbsp;&nbsp;&nbsp;celery -A slaves.outbound worker -Q outbound --loglevel=info -n outbound.worker.%h<br />
 
 
 Platform Structure:
