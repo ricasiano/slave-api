@@ -5,16 +5,19 @@ Chikka API integration but on a queue-based workflow. It runs on python, flask, 
 
 Installation
 ============
-create an ec2 instance<br />
+1. create an ec2 instance<br />
  - on security group, allow http(port 80)<br /><br />
 
-run: source install.sh<br />
-re-login<br />
-restart nginx<br />
-restart supervisor<br />
-run celery workers in foreground or daemonize it<br /><br />
+2. copy the installation script(install.sh) to your server<br />
+ - open the install.sh script
+ - change the environment variables to your corresponding chikka credentials
+3. run: *source install.sh* from home directory<br />
+4. re-login<br />
+5. restart nginx<br />
+6. restart supervisor<br />
+7. run celery workers in foreground or daemonize it<br /><br />
 
-workers: <br /><br />
+<b>workers:</b> <br /><br />
 &nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.notification worker -Q notification --loglevel=info -n notification1.worker.%h<br />
 &nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.message worker -Q message --loglevel=info -n message1.worker.%h<br />
 &nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.message worker -Q message --loglevel=info -n message2.worker.%h<br />
