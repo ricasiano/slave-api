@@ -37,6 +37,8 @@ echo "server {
         proxy_pass http://unix:/home/ubuntu/apps/slave-api/app.sock;
     }
 }" | sudo tee --append /etc/nginx/conf.d/default.conf > /dev/null
+sudo service supervisor restart
+sudo service nginx restart
 pip install --upgrade pip
 sudo pip install virtualenv
 mkdir apps
