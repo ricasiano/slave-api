@@ -5,5 +5,4 @@ sms-workers/venv/
 *.pyc
 .idea
 .nbproject
-configs
 *.out
