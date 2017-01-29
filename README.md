@@ -3,6 +3,27 @@ slave-api
 
 Chikka API integration but on a queue-based workflow. It runs on python, flask, nginx, gunicorn, rabbitmq, celery & mongodb for database(redis if ram wasn't that expensive =(   ). Test server runs on Vagrant and workers(gunicorn, celery workers) are daemonized via supervisor.
 
+Installation
+============
+1. create an ec2 instance<br />
+ - on security group, allow http(port 80)<br /><br />
+
+2. copy the installation script(install.sh) to your server<br />
+ - open the install.sh script
+ - change the environment variables to your corresponding chikka credentials
+3. run: *source install.sh* from home directory<br />
+4. re-login<br />
+5. restart nginx<br />
+6. restart supervisor<br />
+7. run celery workers in foreground or daemonize it<br /><br />
+
+<b>workers:</b> <br /><br />
+&nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.notification worker -Q notification --loglevel=info -n notification1.worker.%h<br />
+&nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.message worker -Q message --loglevel=info -n message1.worker.%h<br />
+&nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.message worker -Q message --loglevel=info -n message2.worker.%h<br />
+&nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.inbound.keywords.bord.process worker -Q bord --loglevel=info -n bord1.worker.%h<br />
+
+
 Platform Structure:
 ===================
 .
@@ -21,17 +42,4 @@ sms/
 |&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;+--&nbsp;&nbsp;project2<br />
 |&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;+--&nbsp;&nbsp;projectN<br />
 
-create an ec2 instance
- - on security group, allow http(port 80)
 
-run: source install.sh
-re-login
-restart nginx
-restart supervisor
-run celery workers in foreground or daemonize it
-
-workers: 
-    celery -A routing.post.notification worker -Q notification --loglevel=info -n notification1.worker.%h
-    celery -A routing.post.message worker -Q message --loglevel=info -n message1.worker.%h
-    celery -A routing.post.message worker -Q message --loglevel=info -n message2.worker.%h
-    celery -A routing.post.inbound.keywords.bord.process worker -Q bord --loglevel=info -n bord1.worker.%h
