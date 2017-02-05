@@ -1,4 +1,7 @@
 #!/bin/sh
+export CHIKKA_CLIENT_ID="YOUR_CHIKKA_CLIENT_ID"
+export CHIKKA_SECRET_KEY="YOUR_CHIKKA_SECRET_KEY"
+export CHIKKA_SHORTCODE=YOUR_SHORTCODE_HERE
 sudo cat <<EOF > sudo /etc/apt/sources.list.d/rabbitmq.list
 sudo deb http://www.rabbitmq.com/debian/ testing main
 EOF
