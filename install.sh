@@ -1,7 +1,12 @@
 #!/bin/sh
-echo "CHIKKA_CLIENT_ID=\"YOUR_CHIKKA_CLIENT_ID\"
-CHIKKA_SECRET_KEY=\"YOUR_CHIKKA_SECRET_KEY\"
-CHIKKA_SHORTCODE=YOUR_SHORTCODE_HERE" | tee --append /home/ubuntu/.profile > /dev/null
+touch runsms.sh
+echo "export CHIKKA_CLIENT_ID=\"61a0f4ac8fd4ac7a68a37eac19dd35249a54f3cf2b1fe2ee7c50c08ab80f6208\"
+export CHIKKA_SECRET_KEY=\"4af4fee29c27663baa6fc3a268f7ba91f57e42423516130738a9fbf828c88c92\"
+export CHIKKA_SHORTCODE=29290700
+cd apps/slave-api/sms
+. venv/bin/activate
+" | tee --append /home/ubuntu/runsms.sh > /dev/null
+chmod 700 runsms.sh
 sudo cat <<EOF > sudo /etc/apt/sources.list.d/rabbitmq.list
 sudo deb http://www.rabbitmq.com/debian/ testing main
 EOF
