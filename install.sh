@@ -1,6 +1,8 @@
 #!/bin/sh
 touch runsms.sh
-echo "export CHIKKA_CLIENT_ID=\"YOUR_CHIKKA_CLIENT_ID\"
+echo "
+#!/bin/sh
+export CHIKKA_CLIENT_ID=\"YOUR_CHIKKA_CLIENT_ID\"
 export CHIKKA_SECRET_KEY=\"YOUR_SECRET_KEY\"
 export CHIKKA_SHORTCODE=YOUR_SHORTCODE
 cd apps/slave-api/sms
