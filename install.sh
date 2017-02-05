@@ -1,7 +1,7 @@
 #!/bin/sh
-export CHIKKA_CLIENT_ID="YOUR_CHIKKA_CLIENT_ID"
-export CHIKKA_SECRET_KEY="YOUR_CHIKKA_SECRET_KEY"
-export CHIKKA_SHORTCODE=YOUR_SHORTCODE_HERE
+echo "CHIKKA_CLIENT_ID=\"YOUR_CHIKKA_CLIENT_ID\"
+CHIKKA_SECRET_KEY=\"YOUR_CHIKKA_SECRET_KEY\"
+CHIKKA_SHORTCODE=YOUR_SHORTCODE_HERE" " | tee --append /home/ubuntu/.profile > /dev/null
 sudo cat <<EOF > sudo /etc/apt/sources.list.d/rabbitmq.list
 sudo deb http://www.rabbitmq.com/debian/ testing main
 EOF
@@ -57,7 +57,5 @@ pip install gunicorn
 pip install pika
 pip install uuid
 pip install requests
-export CHIKKA_CLIENT_ID="YOUR_CHIKKA_CLIENT_ID"
-export CHIKKA_SECRET_KEY="YOUR_CHIKKA_SECRET_KEY"
-export CHIKKA_SHORTCODE=YOUR_SHORTCODE_HERE
+exit
 exit
