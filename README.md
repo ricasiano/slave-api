@@ -15,8 +15,9 @@ Installation
 4. re-login<br />
 5. restart nginx<br />
 6. restart supervisor<br />
-7. on home directory, run **source runsms.sh** to export the environment variables and execute the virtualenv wrapper
-8. run celery workers in foreground or daemonize it<br /><br />
+7. edit source.sh, supply the appropriate credentials
+8. on home directory, run **source runsms.sh** to export the environment variables and execute the virtualenv wrapper
+9. run celery workers in foreground or daemonize it<br /><br />
 
 <b>workers:</b> <br /><br />
 &nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.notification worker -Q notification --loglevel=info -n notification1.worker.%h<br />
