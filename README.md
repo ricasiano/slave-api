@@ -19,6 +19,12 @@ Installation
 8. on home directory, run **source runsms.sh** to export the environment variables and execute the virtualenv wrapper
 9. run celery workers in foreground or daemonize it<br /><br />
 
+<br /><br />
+
+To test
+=======
+text <b>bord on</b> to your shortcode/access number
+
 <b>workers:</b> <br /><br />
 &nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.notification worker -Q notification --loglevel=info -n notification1.worker.%h<br />
 &nbsp;&nbsp;&nbsp;&nbsp;celery -A routing.post.message worker -Q message --loglevel=info -n message1.worker.%h<br />
